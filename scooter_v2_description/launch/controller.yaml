@@ -1,0 +1,19 @@
+scooter_v2_controller:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  # Position Controllers --------------------------------------
+  RW_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: RW
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  LW_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: LW
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  BW_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: BW
+    pid: {p: 100.0, i: 0.01, d: 10.0}
