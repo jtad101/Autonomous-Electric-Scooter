@@ -1,0 +1,248 @@
+<?xml version='1.0'?>
+
+<robot name="glide" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!--Includue Files-->
+  <xacro:include filename="$(find glide_description)/urdf/glide.gazebo" />
+  <xacro:include filename="$(find glide_description)/urdf/glide.trans" />
+  <xacro:include filename="$(find glide_description)/urdf/materials.xacro" />
+  
+  <!--Links-->
+
+  <link name='base_link'>
+   <pose>0 0 0.1 0 0 0</pose>
+
+    <inertial>
+      <mass value="5.0"/>
+      <origin xyz="0 0 0.1" rpy=" 0 0 0"/>
+      <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1" iyz="0" izz="0.1"/>
+    </inertial>
+
+    <collision name='collision'>
+      <geometry>
+        <box size="1.3 0.3 0.15"/>
+      </geometry>
+    </collision>
+    
+    <visual name='base_link_visual'>
+      <origin xyz="0 0 0.1" rpy=" 0 0 0"/>
+      <geometry>
+        <box size="1.3 0.3 0.15"/>
+      </geometry>
+    </visual>
+
+  </link>
+
+
+  <link name="lw_1">
+    <collision name="collision">
+      <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+      <geometry>
+        <cylinder radius="0.2" length="0.1"/>
+      </geometry>
+    </collision>
+    <visual name="left_wheel_visual">
+      <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+      <geometry>
+        <cylinder radius="0.2" length="0.1"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+      <mass value="5"/>
+      <inertia ixx=".1" ixy="0.0" ixz="0.0" iyy=".1" iyz="0.0" izz=".1"/>
+    </inertial>
+  </link>
+
+  <link name="rw_1">
+     <collision name="collision">
+      <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+      <geometry>
+        <cylinder radius="0.2" length="0.1"/>
+      </geometry>
+    </collision>
+    <visual name="right_wheel_visual">
+      <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+      <geometry>
+        <cylinder radius="0.2" length="0.1"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+      <mass value="5"/>
+      <inertia ixx=".1" ixy="0.0" ixz="0.0" iyy=".1" iyz="0.0" izz=".1"/>
+    </inertial>
+  </link>
+
+  <link name="bw_1">
+   <collision name="collision">
+      <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+      <geometry>
+        <cylinder radius="0.1" length="0.1"/>
+      </geometry>
+    </collision>
+    <visual name="right_wheel_visual">
+      <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+      <geometry>
+        <cylinder radius="0.1" length="0.1"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+      <mass value="5"/>
+      <inertia ixx=".1" ixy="0.0" ixz="0.0" iyy=".1" iyz="0.0" izz=".1"/>
+    </inertial>
+  </link>
+
+  <link name="rear_stem">
+     <collision name="rear_stem_">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.01" length="0.08"/>
+      </geometry>
+    </collision>
+    <visual name="rear_stem_visual">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.01" length="0.08"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="2"/>
+      <inertia ixx=".1" ixy="0.0" ixz="0.0" iyy=".1" iyz="0.0" izz=".1"/>
+    </inertial>
+  </link>
+
+  <link name="stem">
+    <collision name="stem_">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.03" length="1"/>
+      </geometry>
+    </collision>
+    <visual name="stem_visual">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.03" length="1"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="5"/>
+      <inertia ixx=".1" ixy="0.0" ixz="0.0" iyy=".1" iyz="0.0" izz=".1"/>
+    </inertial>
+  </link>
+
+  <link name="handle_link_1">
+    <collision name="handlestem_">
+      <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+      <geometry>
+        <cylinder radius="0.03" length="0.4"/>
+      </geometry>
+    </collision>
+    <visual name="stem_visual">
+      <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+      <geometry>
+        <cylinder radius="0.03" length="0.4"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+      <mass value="5"/>
+      <inertia ixx=".1" ixy="0.0" ixz="0.0" iyy=".1" iyz="0.0" izz=".1"/>
+    </inertial>
+  </link>
+
+  <link name="lidar_link_1">
+    <collision>
+      <origin xyz="0 0 0.1" rpy="0 0 1.5708"/>
+      <geometry>
+    <box size="0.15 0.15 0.15"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 .1" rpy="0 0 1.5708"/>
+      <geometry>
+        <mesh filename="package://glide_description/meshes/hokuyo.dae"/>
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0.1" rpy="0 0 1.5708"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <!--Joints-->
+
+  <joint type="continuous" name="bw_joint">
+    <origin xyz="-0.1 0 0" rpy="0 0 0"/>
+    <child link="bw_1"/>
+    <parent link="rear_stem"/>
+    <axis xyz="0 1 0" rpy="0 0 0"/>
+    <limit effort="10000" velocity="1000"/>
+    <joint_properties damping="1.0" friction="1.0"/>
+  </joint>
+
+  <joint type="revolute" name="rear_stem_hinge">
+    <origin xyz="-0.7 0 0" rpy="0 0 0"/>
+    <child link="rear_stem"/>
+    <parent link="base_link"/>
+    <axis  xyz="0 0 1" rpy="0 0 0"/>
+    <limit lower="-0.80" upper="0.80" effort="20" velocity="2.0"/>
+    <joint_properties damping="1.0" friction="1.0"/>
+  </joint>
+
+  <joint type="continuous" name="lw_joint">
+    <origin xyz="0.6 0.20 0.1" rpy="0 0 0"/>
+    <!--origin xyz="0.1 0.13 0" rpy="0 1.5707 1.5707"/-->
+    <child link="lw_1"/>
+    <parent link="base_link"/>
+    <axis xyz="0 1 0" rpy="0 0 0"/>
+    <limit effort="10000" velocity="1000"/>
+    <joint_properties damping="1.0" friction="1.0"/>
+  </joint>
+
+  <joint type="continuous" name="rw_joint">
+    <origin xyz="0.6 -0.20 0.1" rpy="0 0 0"/>
+    <!--origin xyz="0.1 -0.13 0" rpy="0 1.5707 1.5707"/-->
+    <child link="rw_1"/>
+    <parent link="base_link"/>
+    <axis xyz="0 1 0" rpy="0 0 0"/>
+    <limit effort="10000" velocity="1000"/>
+    <joint_properties damping="1.0" friction="1.0"/>
+  </joint>
+
+
+  <joint type="fixed" name="stem_hinge">
+    <origin xyz="0.6 0 0.55" rpy="0 0 0"/>
+    <!--origin xyz="0.1 0.13 0" rpy="0 1.5707 1.5707"/-->
+    <child link="stem"/>
+    <parent link="base_link"/>
+    <axis xyz="0 1 0" rpy="0 0 0"/>
+    <limit effort="10000" velocity="1000"/>
+    <joint_properties damping="1.0" friction="1.0"/>
+  </joint>
+
+
+  <joint type="fixed" name="handle_joint">
+   <origin xyz="0 0 0.5" rpy="1.5707 1.5707 1.5707"/>
+    <!--origin xyz="0.1 0.13 0" rpy="0 1.5707 1.5707"/-->
+    <child link="handle_link_1"/>
+    <parent link="stem"/>
+    <axis xyz="0 1 0" rpy="0 0 0"/>
+    <limit effort="10000" velocity="1000"/>
+    <joint_properties damping="1.0" friction="1.0"/>
+  </joint>
+
+  <joint name="lidar_joint" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="0.65 0 0.4" rpy="0 0 -1.5708"/>
+    <parent link="base_link"/>
+    <child link="lidar_link_1"/>
+  </joint>
+
+</robot>

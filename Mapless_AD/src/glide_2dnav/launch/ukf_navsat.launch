@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <rosparam command="load" file="$(find glide_2dnav)/params/ukf_navsat.yaml" />
+
+  <node pkg="robot_localization" type="ukf_localization_node" name="ukf_se_map" clear_params="true"> <!--Works!-->
+    <remap from="odometry" to="odometry/filtered_map"/>
+  </node>
+
+  <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform" clear_params="true"> <!--Works!-->
+    <remap from="odometry" to="odometry/filtered_map"/>
+    <remap from="imu/data" to="imu/data" />
+    <remap from="gps/fix" to="gps/fix"/>
+  </node>
+
+</launch>

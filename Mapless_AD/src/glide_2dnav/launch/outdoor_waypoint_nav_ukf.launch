@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<launch>
+
+   <!--Run Gazebo Simulation-->
+   <include file="$(find glide_description)/launch/gazebo.launch"/> 
+
+   <!--Run Rviz Simulation-->
+   <include file="$(find glide_description)/launch/display.launch"/> 
+
+  <!--- Run EKF & NavSat --> 
+   <include file="$(find glide_2dnav)/launch/ukf_navsat.launch" />
+
+   <!-- Run gmapping to create map -->
+   <include file="$(find glide_2dnav)/launch/gmapping.launch" />
+
+   <!--Run Teleop_twist_keyboard-->
+   <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop" output="screen"/>
+
+   <!-- Launch hector_slam for laser odometry and mapping -->
+   <!-- include file="$(find hector_mapping_nav)/launch/scanmatch_nav.launch" /-->
+
+   <!-- Run husky_navigation to enable move_base -->
+   <include file="$(find glide_2dnav)/launch/move_base.launch" />
+
+   <!-- launch safety node to allow the user to disable velocity commands to the robot -->
+  <include file="$(find outdoor_waypoint_nav)/launch/include/safety_node.launch" />
+
+  <!-- Run rviz -->
+     <!-- Using standard configuration file -->
+  	<!--node name="rviz" pkg="rviz" type="rviz" args="-d $(find husky_viz)/rviz/model.rviz" /-->
+     <!-- Using custom configuration file -->
+	<!--node name="rviz" pkg="rviz" type="rviz" args="-d $(find outdoor_waypoint_nav)/rviz_config/model.rviz" /-->
+
+</launch>
