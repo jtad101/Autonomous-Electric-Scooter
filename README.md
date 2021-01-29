@@ -1,5 +1,5 @@
 # Autonomous Navigation of an Electric Scooter
-Open any one of the folders and run the `catkin_make` command in a terminal. THen source the `setup` file present in the `devel` folder to your terminal environment. 
+Open any one of the folders and run the `catkin_make` command in a terminal. Then source the `setup` file present in the `devel` folder to your terminal environment. 
 
 ## Map-based Autonomous Navigation
 ## To create a map
